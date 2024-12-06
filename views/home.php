@@ -7,7 +7,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!--        <title>--><?php //echo $title;?><!--</title>-->
     <title><?= $title; ?></title>
 
     <!-- CSS FILES -->
@@ -15,8 +14,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,700;1,200;1,700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,700;1,200;1,700&display=swap" rel="stylesheet">
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -42,13 +40,12 @@
 <main>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.php">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="images/coffee-beans.png" class="navbar-brand-image img-fluid" alt="Barista Cafe Template">
                 Barista
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -140,16 +137,11 @@
 
                     <h2 class="text-white mb-3">Cafe KL</h2>
 
-                    <p class="text-white">The café had been in the town for as long as anyone could remember, and it had
-                        become a beloved institution among the locals.</p>
+                    <p class="text-white">The café had been in the town for as long as anyone could remember, and it had become a beloved institution among the locals.</p>
 
-                    <p class="text-white">The café was run by a friendly and hospitable couple, Mr. and Mrs. Johnson.
-                        Barista Cafe is free Bootstrap 5 HTML layout provided by <a rel="nofollow"
-                                                                                    href="https://www.tooplate.com"
-                                                                                    target="_blank">Tooplate</a>.</p>
+                    <p class="text-white">The café was run by a friendly and hospitable couple, Mr. and Mrs. Johnson. Barista Cafe is free Bootstrap 5 HTML layout provided by <a rel="nofollow" href="https://www.tooplate.com" target="_blank">Tooplate</a>.</p>
 
-                    <a href="#barista-team" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4">Meet
-                        Baristas</a>
+                    <a href="#barista-team" class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4">Meet Baristas</a>
                 </div>
 
             </div>
@@ -167,32 +159,27 @@
                     <h2 class="text-white">Meet People</h2>
                 </div>
 
-
-                <?php foreach ($employees as $index => $employee): ?>
+                <?php foreach($employees as $index => $employee): ?>
                     <div class="col-lg-3 col-md-6 col-12 mb-4">
                         <div class="team-block-wrap">
                             <div class="team-block-info d-flex flex-column">
                                 <div class="d-flex mt-auto mb-3">
-                                    <h4 class="text-white mb-0"><?= $employee->name ?></h4>
+                                    <h4 class="text-white mb-0"><?= $employee->name; ?></h4>
 
-                                    <p class="badge ms-4"><em><?= $employee->job ?></em></p>
+                                    <p class="badge ms-4"><em><?= $employee->job; ?></em></p>
                                 </div>
 
-                                <p class="text-white mb-0"><?= $employee->description ?></p>
+                                <p class="text-white mb-0"><?= $employee->description; ?></p>
                             </div>
 
                             <div class="team-block-image-wrap">
-                                <img src="<?= $employee->img ?>"
-                                     class="team-block-image img-fluid" alt="">
+                                <img src="<?= $employee->img; ?>" class="team-block-image img-fluid" alt="Image de <?= $employee->name; ?>">
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
 
-
             </div>
-
-        </div>
         </div>
     </section>
 
@@ -201,178 +188,110 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-6 col-12 mb-4 mb-lg-0">
-                    <div class="menu-block-wrap">
-                        <div class="text-center mb-4 pb-lg-2">
-                            <em class="text-white">Delicious Menu</em>
-                            <h4 class="text-white">Breakfast</h4>
-                        </div>
-
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Pancakes</h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$12.50</strong>
+                <?php foreach($categories as $index => $category): ?>
+                    <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                        <div class="menu-block-wrap">
+                            <div class="text-center mb-4 pb-lg-2">
+                                <em class="text-white"><?= $category->pre; ?></em>
+                                <h4 class="text-white"><?= $category->title; ?></h4>
                             </div>
 
-                            <div class="border-top mt-2 pt-2">
-                                <small>Fresh brewed coffee and steamed milk</small>
-                            </div>
-                        </div>
+                            <?php foreach($category->subcategories as $index => $subcategory): ?>
+                                <div class="my-4">
+                                    <em class="text-white"><?= $subcategory->pre; ?></em>
+                                    <h4 class="text-white"><?= $subcategory->title; ?></h4>
+                                </div>
 
-                        <div class="menu-block my-4">
-                            <div class="d-flex">
-                                <h6>
-                                    Toasted Waffle
-                                </h6>
+                                <?php foreach($subcategory->products as $index => $product): ?>
+                                    <div class="menu-block my-4">
+                                        <div class="d-flex">
+                                            <h6><?= $product->name; ?>
+                                                <?php if($product->tag): ?>
+                                                    <span class="badge ms-3"><?= $product->tag; ?></span>
+                                                <?php endif; ?>
+                                            </h6>
 
-                                <span class="underline"></span>
+                                            <span class="underline"></span>
 
-                                <strong class="text-white ms-auto">
-                                    <del>$16.50</del>
-                                </strong>
+                                            <?php if($product->discount): ?>
+                                                <strong class="text-white ms-auto"><del>€<?= number_format($product->price / 100, 2, ',', ' '); ?></del></strong>
+                                                <strong class="ms-2">€<?= number_format($product->discount / 100, 2, ',', ' '); ?></strong>
+                                            <?php else: ?>
+                                                <strong class="ms-auto">€<?= number_format($product->price / 100, 2, ',', ' '); ?></strong>
+                                            <?php endif; ?>
+                                        </div>
 
-                                <strong class="ms-2">$12.00</strong>
-                            </div>
+                                        <div class="border-top mt-2 pt-2">
+                                            <small><?= $product->description; ?></small>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                                <!--
+                                                                    <div class="menu-block my-4">
+                                                                        <div class="d-flex">
+                                                                            <h6>
+                                                                                Toasted Waffle
+                                                                            </h6>
 
-                            <div class="border-top mt-2 pt-2">
-                                <small>Brewed coffee and steamed milk</small>
-                            </div>
-                        </div>
+                                                                            <span class="underline"></span>
 
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Fried Chips
-                                    <span class="badge ms-3">Recommend</span>
-                                </h6>
+                                                                            <strong class="text-white ms-auto"><del>$16.50</del></strong>
 
-                                <span class="underline"></span>
+                                                                            <strong class="ms-2">$12.00</strong>
+                                                                        </div>
 
-                                <strong class="ms-auto">$15.0</strong>
-                            </div>
+                                                                        <div class="border-top mt-2 pt-2">
+                                                                            <small>Brewed coffee and steamed milk</small>
+                                                                        </div>
+                                                                    </div>
 
-                            <div class="border-top mt-2 pt-2">
-                                <small>Rich Milk and Foam</small>
-                            </div>
-                        </div>
+                                                                    <div class="menu-block">
+                                                                        <div class="d-flex">
+                                                                            <h6>Fried Chips
+                                                                                <span class="badge ms-3">Recommend</span>
+                                                                            </h6>
 
-                        <div class="menu-block my-4">
-                            <div class="d-flex">
-                                <h6>Pancakes</h6>
+                                                                            <span class="underline"></span>
 
-                                <span class="underline"></span>
+                                                                            <strong class="ms-auto">$15.0</strong>
+                                                                        </div>
 
-                                <strong class="ms-auto">$12.50</strong>
-                            </div>
+                                                                        <div class="border-top mt-2 pt-2">
+                                                                            <small>Rich Milk and Foam</small>
+                                                                        </div>
+                                                                    </div>
 
-                            <div class="border-top mt-2 pt-2">
-                                <small>Fresh brewed coffee and steamed milk</small>
-                            </div>
-                        </div>
+                                                                    <div class="menu-block my-4">
+                                                                        <div class="d-flex">
+                                                                            <h6>Pancakes</h6>
 
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Banana Cakes</h6>
+                                                                            <span class="underline"></span>
 
-                                <span class="underline"></span>
+                                                                            <strong class="ms-auto">$12.50</strong>
+                                                                        </div>
 
-                                <strong class="ms-auto">$18.0</strong>
-                            </div>
+                                                                        <div class="border-top mt-2 pt-2">
+                                                                            <small>Fresh brewed coffee and steamed milk</small>
+                                                                        </div>
+                                                                    </div>
 
-                            <div class="border-top mt-2 pt-2">
-                                <small>Rich Milk and Foam</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                                                    <div class="menu-block">
+                                                                        <div class="d-flex">
+                                                                            <h6>Banana Cakes</h6>
 
-                <div class="col-lg-6 col-12">
-                    <div class="menu-block-wrap">
-                        <div class="text-center mb-4 pb-lg-2">
-                            <em class="text-white">Favourite Menu</em>
-                            <h4 class="text-white">Coffee</h4>
-                        </div>
+                                                                            <span class="underline"></span>
 
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Latte</h6>
+                                                                            <strong class="ms-auto">$18.0</strong>
+                                                                        </div>
 
-                                <span class="underline"></span>
-
-                                <strong class="text-white ms-auto">
-                                    <del>$12.50</del>
-                                </strong>
-
-                                <strong class="ms-2">$7.50</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Fresh brewed coffee and steamed milk</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block my-4">
-                            <div class="d-flex">
-                                <h6>
-                                    White Coffee
-                                    <span class="badge ms-3">Recommend</span>
-                                </h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$5.90</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Brewed coffee and steamed milk</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Chocolate Milk</h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$5.50</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Rich Milk and Foam</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block my-4">
-                            <div class="d-flex">
-                                <h6>Greentea</h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$7.50</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Fresh brewed coffee and steamed milk</small>
-                            </div>
-                        </div>
-
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>Dark Chocolate</h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">$7.25</strong>
-                            </div>
-
-                            <div class="border-top mt-2 pt-2">
-                                <small>Rich Milk and Foam</small>
-                            </div>
+                                                                        <div class="border-top mt-2 pt-2">
+                                                                            <small>Rich Milk and Foam</small>
+                                                                        </div>
+                                                                    </div> -->
+                            <?php endforeach; ?>
                         </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
 
             </div>
         </div>
@@ -390,104 +309,49 @@
                 </div>
 
                 <div class="timeline">
-                    <div class="timeline-container timeline-container-left">
-                        <div class="timeline-content">
-                            <div class="reviews-block">
-                                <div class="reviews-block-image-wrap d-flex align-items-center">
-                                    <img src="images/reviews/young-woman-with-round-glasses-yellow-sweater.jpg"
-                                         class="reviews-block-image img-fluid" alt="">
+                    <?php foreach($reviews as $index => $review): ?>
+                        <div class="timeline-container timeline-container-<?= ($index % 2 === 0) ? 'left' : 'right'; ?>">
+                            <div class="timeline-content">
+                                <div class="reviews-block">
+                                    <div class="reviews-block-image-wrap d-flex align-items-center" style="background-image: url(<?= $review->cover_img; ?>);">
+                                        <img src="<?= $review->avatar_img; ?>" class="reviews-block-image img-fluid" alt="Photo de <?= $review->customer; ?>">
 
-                                    <div class="">
-                                        <h6 class="text-white mb-0">Sandra</h6>
-                                        <em class="text-white"> Customers</em>
+                                        <div class="">
+                                            <h6 class="text-white mb-0"><?= $review->customer; ?></h6>
+                                            <em class="text-white"> Customers</em>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="reviews-block-info">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
+                                    <div class="reviews-block-info">
+                                        <p><?= $review->content; ?></p>
 
-                                    <div class="d-flex border-top pt-3 mt-4">
-                                        <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
+                                        <div class="d-flex border-top pt-3 mt-4">
+                                            <strong class="text-white"><?= number_format($review->rating / 10, 1, ',', ' '); ?> <small class="ms-2">Rating</small></strong>
 
-                                        <div class="reviews-group ms-auto">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star"></i>
+                                            <?php /*
+                                                    <!-- Première version possible: -->
+                                                    <div class="reviews-group ms-auto">
+                                                        <?php for($i=0; $i < floor($review->rating / 10); $i++): ?>
+                                                        <i class="bi-star-fill"></i>
+                                                        <?php endfor; ?>
+                                                        <?php for($i=0; $i < 5 - floor($review->rating / 10); $i++): ?>
+                                                        <i class="bi-star"></i>
+                                                        <?php endfor; ?>
+                                                    </div>
+                                                    */ ?>
+                                            <!-- Deuxième version possible -->
+                                            <div class="reviews-group ms-auto">
+                                                <?php for($i=0; $i < 5; $i++): ?>
+                                                    <i class="bi-star<?= ($i < floor($review->rating / 10)) ? '-fill' : ''; ?>"></i>
+                                                <?php endfor; ?>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="timeline-container timeline-container-right">
-                        <div class="timeline-content">
-                            <div class="reviews-block">
-                                <div class="reviews-block-image-wrap d-flex align-items-center">
-                                    <img src="images/reviews/senior-man-white-sweater-eyeglasses.jpg"
-                                         class="reviews-block-image img-fluid" alt="">
-
-                                    <div class="">
-                                        <h6 class="text-white mb-0">Don</h6>
-                                        <em class="text-white"> Customers</em>
-                                    </div>
-                                </div>
-
-                                <div class="reviews-block-info">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-
-                                    <div class="d-flex border-top pt-3 mt-4">
-                                        <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
-
-                                        <div class="reviews-group ms-auto">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-container timeline-container-left">
-                        <div class="timeline-content">
-                            <div class="reviews-block">
-                                <div class="reviews-block-image-wrap d-flex align-items-center">
-                                    <img src="images/reviews/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair.jpg"
-                                         class="reviews-block-image img-fluid" alt="">
-
-                                    <div class="">
-                                        <h6 class="text-white mb-0">Olivia</h6>
-                                        <em class="text-white"> Customers</em>
-                                    </div>
-                                </div>
-
-                                <div class="reviews-block-info">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-
-                                    <div class="d-flex border-top pt-3 mt-4">
-                                        <strong class="text-white">4.5 <small class="ms-2">Rating</small></strong>
-
-                                        <div class="reviews-group ms-auto">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
 
             </div>
@@ -512,22 +376,19 @@
                             <div class="col-lg-6 col-12">
                                 <label for="name" class="form-label">Name <sup class="text-danger">*</sup></label>
 
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Jackson"
-                                       required="">
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Jackson" required="">
                             </div>
 
                             <div class="col-lg-6 col-12">
                                 <label for="email" class="form-label">Email Address</label>
 
-                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control"
-                                       placeholder="Jack@gmail.com" required="">
+                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Jack@gmail.com" required="">
                             </div>
 
                             <div class="col-12">
                                 <label for="message" class="form-label">How can we help?</label>
 
-                                <textarea name="message" rows="4" class="form-control" id="message"
-                                          placeholder="Message" required=""></textarea>
+                                <textarea name="message" rows="4" class="form-control" id="message" placeholder="Message" required=""></textarea>
 
                             </div>
                         </div>
@@ -539,10 +400,7 @@
                 </div>
 
                 <div class="col-lg-6 col-12 mx-auto mt-5 mt-lg-0 ps-lg-5">
-                    <iframe class="google-map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5039.668141741662!2d72.81814769288509!3d19.043340656729775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c994f34a7355%3A0x2680d63a6f7e33c2!2sLover%20Point!5e1!3m2!1sen!2sth!4v1692722771770!5m2!1sen!2sth"
-                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5039.668141741662!2d72.81814769288509!3d19.043340656729775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c994f34a7355%3A0x2680d63a6f7e33c2!2sLover%20Point!5e1!3m2!1sen!2sth!4v1692722771770!5m2!1sen!2sth" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
             </div>
